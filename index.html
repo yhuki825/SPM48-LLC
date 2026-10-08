@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!--
+================================================================
+合同会社SPM48 ブランドサイト デザイン案（9/26ハウススタイル版）
+  コンセプト：「48枚の歯が、毎日まわる。」
+    社名の数字「48」を、48枚の歯をもつ大きな歯車に見立てる。
+    ECサイトの売上は、商品登録・在庫・受発注・発送・顧客対応・分析・販促という
+    目立たない日々の仕事が、歯の一枚一枚のように噛み合って回ることで生まれる。
+    中心の歯車（全体管理）に、四つの業務の小さな歯車が噛み合って回る会社として表現。
+    ※社名「SPM」の由来は未確認のため解釈していません。「48」の解釈も制作側の案です。
+      所在地・地名、代表者名からの着想は採用していません。
+    ・ヒーロー：円い枠の中で、48枚歯の歯車と四つの小さな歯車が噛み合って回るCanvas（枠の中の一つの物）
+    ・右端のスクロールレール：小さな歯車が転がりながら下り、歯の数を 00/48 → 48/48 と数える
+    ・図：中心の歯車と四つの業務の歯車が噛み合うSVG
+    ・明るい生成りの地に、墨色のセクションを挟む構成
+  書体：Zen Old Mincho ＋ Zen Kaku Gothic New ＋ Jost ＋ IBM Plex Mono
+  配色：生成り #F2EEE6 ／ 墨 #1C1F24 ／ 山吹 #D9971E
+  デプロイ：Cloudflare Pages（Direct Upload）にこのファイルをそのままアップロード。
+            ビルド不要。外部依存は Google Fonts と Unsplash 画像のみ。
+
+  ■ 公開前の確認事項（チェックリスト）
+  【確認事項】ロゴ文字「SPM48」と歯車のマークは仮ロゴです。社名「SPM48」の由来は未確認で、「48＝歯車の歯の数」は本案の解釈です。
+  【確認事項】キャッチコピー「売り場の裏側を、毎日まわす。」と各見出しは制作側の案です。
+  【確認事項】「ECサイト運営業務」が自社ECの運営か、他社ECの運営受託かは未確認です。本文はどちらにも読める表現にしています。
+  【確認事項】各業務の説明はCSVの内容を言い換え・補足した案です。運用サイクル・大切にしていることは制作側の案です。
+  【確認事項】売上・件数などの数値、取扱商品、販売チャネルはCSVに無いため掲載していません。運営受託でない自社販売の場合は特定商取引法に基づく表記の要否をご確認ください。
+  【確認事項】代表者の役職名は合同会社のため「代表社員」と仮置きしています。
+  【確認事項】設立年月日・資本金・従業員数はCSVに無いため会社概要ではコメントアウトしています。
+  【確認事項】代表メッセージは草案です。ご本人の確認・修正を経て公開してください。署名欄の氏名は会社概要に記載のため省略しています。
+  【確認事項】画像はUnsplashの仮素材（差し替え推奨）：1553413077-190dd305871c / 1551434678-e076c223a692 / 1460925895917-afdab827c52f / 1607082348824-0a96f2a4b9da / 1563013544-824ae1b704d3 / 1586528116311-ad8dd3c8310d
+  【確認事項】OGP画像・favicon（仮の歯車）・公開URL
+  ※ご依頼に合わせ、連絡用のフォーム・エリア、代表者写真は設けていません。
+================================================================
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>合同会社SPM48｜ECサイト運営業務</title>
+<meta name="description" content="合同会社SPM48は、商品登録・在庫管理・受発注・発送などのバックオフィスから、カスタマーサポート、サイト改善・分析、販促・キャンペーン、全体管理まで、ECサイトの運営業務を担う会社です。">
+<meta property="og:title" content="合同会社SPM48｜売り場の裏側を、毎日まわす。">
+<meta property="og:description" content="ECサイトの運営業務を、バックオフィスから販促まで。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<!-- 【確認事項】og:url / og:image は公開ドメイン確定後に設定 -->
+<meta name="theme-color" content="#F2EEE6">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2EEE6'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23D9971E' stroke-width='4' stroke-dasharray='2.6 2.6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='%231C1F24' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&family=Zen+Old+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{
+  /* 梱包材の生成りと、機械油の墨、山吹の歯車 */
+  --kraft:#F2EEE6;        /* 基調：梱包材の生成り（明るい地） */
+  --kraft-2:#E9E3D7;      /* 一段濃い生成り */
+  --kraft-deep:#1C1F24;   /* 墨：暗いセクション・フッター */
+  --yamabuki:#D9971E;     /* 差し色：山吹（歯車） */
+  --base:var(--kraft);--base2:var(--kraft-2);--deep:var(--kraft-deep);
+  --base-rgb:242,238,230;
+  --text:#1C1F24;--mute:#6B6A66;--soft:rgba(28,31,36,.8);
+  --accent:#B87A0E;--accent-rgb:217,151,30;
+  --line:rgba(28,31,36,.14);--line-strong:rgba(28,31,36,.4);
+  --paper:#1C1F24;--ink:#EEE9DF;--ink-rgb:238,233,223;--ink-mute:#A39E93;--accent-ink:#E9AC3A;
+  --fallback:repeating-conic-gradient(from 0deg at 50% 50%,rgba(217,151,30,.18) 0 4deg,transparent 4deg 7.5deg),linear-gradient(135deg,#E9E3D7,#F2EEE6);
+  --serif:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --latin:"Jost","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --num:var(--mono);
+  --header-h:72px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--base);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.9;letter-spacing:.04em;word-break:auto-phrase;text-wrap:pretty;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p,li,dd,dt{word-break:auto-phrase}
+.nw{display:inline-block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--accent);color:var(--base);padding:10px 16px;text-decoration:none;font-weight:700;transition:top .2s}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(1160px,100% - 48px);margin:0 auto}
+.sec{padding:clamp(96px,14vw,180px) 0;position:relative}
+.alt{background:var(--base2);--sec-bg:var(--base2)}
+.deep{background:var(--deep);--sec-bg:var(--deep)}
+.paper{background:var(--paper);color:var(--ink);--line:rgba(var(--ink-rgb),.16);--line-strong:rgba(var(--ink-rgb),.5);--mute:var(--ink-mute);--soft:rgba(var(--ink-rgb),.8);--sec-bg:var(--paper);--accent:var(--accent-ink)}
+.lead{max-width:34em;margin:0 0 1.4em}
+p{margin:0 0 1.3em}
+
+/* header */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid transparent;transition:background .4s,border-color .4s,backdrop-filter .4s}
+.header.is-scrolled{background:rgba(var(--base-rgb),.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.header-in{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 clamp(20px,4vw,56px);max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.logo svg{flex:none}
+.gnav ul{list-style:none;margin:0;padding:0;display:flex;gap:clamp(16px,2.2vw,34px)}
+.gnav a{position:relative;display:block;padding:6px 0;text-decoration:none;font-size:13px;letter-spacing:.12em}
+.menu-btn{display:none;background:none;border:0;color:var(--text);width:44px;height:44px;cursor:pointer;position:relative;flex:none}
+@media (max-width:900px){
+ :root{--header-h:64px}
+ .menu-btn{display:block;z-index:120}
+ .gnav{position:fixed;inset:0;background:rgba(var(--base-rgb),.97);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;padding:env(safe-area-inset-top,0px) 24px env(safe-area-inset-bottom,0px)}
+ .gnav.is-open{opacity:1;visibility:visible}
+ .gnav ul{flex-direction:column;align-items:center;gap:26px}
+ .gnav a{font-family:var(--serif);font-size:20px;letter-spacing:.14em}
+}
+
+/* hero shared */
+.hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.js .hero [data-in]{opacity:0;transform:translateY(14px);transition:opacity 1.2s cubic-bezier(.22,.7,.2,1),transform 1.2s cubic-bezier(.22,.7,.2,1)}
+.js .hero .v[data-in]{transform:translateY(-14px)}
+.js .is-loaded .hero [data-in]{opacity:1;transform:none}
+.is-loaded .hero [data-in="2"]{transition-delay:.4s}
+.is-loaded .hero [data-in="3"]{transition-delay:.85s}
+.is-loaded .hero [data-in="4"]{transition-delay:1.25s}
+.scroll-cue{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;font-family:var(--latin);font-size:12px;letter-spacing:.24em;color:var(--mute);text-decoration:none;text-transform:uppercase}
+.scroll-cue i{display:block;width:1px;height:44px;background:linear-gradient(var(--mute),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity 1s cubic-bezier(.22,.7,.2,1),transform 1s cubic-bezier(.22,.7,.2,1)}
+.js .reveal.is-in{opacity:1;transform:none}
+.js .reveal--fade{transform:none}
+
+/* photos */
+.ph{position:relative;overflow:hidden;margin:0;background:linear-gradient(135deg,var(--base2),var(--deep))}
+.ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.78) contrast(1.03)}
+.ph.is-fallback{background:var(--fallback)}
+
+/* concept */
+.concept-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:center}
+.concept-text p{max-width:30em}
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto;overflow:visible}
+.fig figcaption{margin-top:16px;text-align:center;font-size:13px;color:var(--mute);letter-spacing:.08em}
+.fig .ln{fill:none;stroke:var(--accent);stroke-width:1.3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s cubic-bezier(.45,.05,.2,1) .3s}
+.fig .ln.d2{transition-delay:.9s}.fig .ln.d3{transition-delay:1.5s}.fig .ln.d4{transition-delay:2.1s}
+.fig .soft{fill:none;stroke:var(--line-strong);stroke-width:1}
+.fig .dot{fill:var(--accent);opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .8s 1.2s,transform .8s cubic-bezier(.3,1.6,.5,1) 1.2s}
+.fig .lbl{fill:currentColor;font-family:var(--serif);font-size:17px;letter-spacing:.16em;opacity:0;transition:opacity 1s 1.8s}
+.fig .lbl-s{fill:var(--mute);font-family:var(--sans);font-size:11px;letter-spacing:.14em;opacity:0;transition:opacity 1s 2s}
+.fig.is-in .ln{stroke-dashoffset:0}
+.fig.is-in .dot{opacity:1;transform:none}
+.fig.is-in .lbl,.fig.is-in .lbl-s{opacity:1}
+@media (max-width:900px){.concept-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* band */
+.band{position:relative;height:clamp(260px,44vw,540px);overflow:hidden;margin:0;background:var(--fallback)}
+.band img{position:absolute;left:0;top:-9%;width:100%;height:118%;object-fit:cover;filter:saturate(.7) brightness(.66);will-change:transform}
+.band figcaption{position:absolute;left:clamp(24px,6vw,88px);bottom:clamp(24px,5vw,56px);z-index:1;font-family:var(--serif);font-size:clamp(18px,2vw,24px);letter-spacing:.16em;line-height:1.9;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+
+/* business rows */
+.biz-intro{max-width:36em;margin:-24px 0 clamp(56px,8vw,96px);color:var(--mute)}
+.biz{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.biz+.biz{margin-top:clamp(72px,10vw,128px)}
+.biz:nth-of-type(even) .biz__media{order:2}
+.biz__media{aspect-ratio:4/3}
+.biz__media img{transform:scale(1.06);transition:transform 2.2s cubic-bezier(.2,.6,.2,1)}
+.biz.is-in .biz__media img{transform:scale(1)}
+.biz:hover .biz__media img{transform:scale(1.03)}
+.biz__kind{margin:0 0 10px;font-size:13px;letter-spacing:.16em;color:var(--accent)}
+.biz h3{font-family:var(--serif);font-weight:600;font-size:clamp(21px,2.3vw,28px);line-height:1.6;letter-spacing:.08em;margin:0 0 18px}
+.biz p{color:var(--soft)}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{font-size:12.5px;letter-spacing:.08em;padding:4px 13px;border:1px solid var(--line-strong);border-radius:999px}
+.note{font-size:13px;color:var(--mute);margin:18px 0 0}
+@media (max-width:900px){.biz{grid-template-columns:minmax(0,1fr)}.biz:nth-of-type(even) .biz__media{order:0}}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:clamp(16px,2.4vw,32px);position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:11px;height:1px;background:var(--line)}
+.steps::after{content:"";position:absolute;left:0;top:11px;height:1px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.6,.1,.2,1)}
+.steps.is-in::after{transform:scaleX(1)}
+.step{position:relative;padding-top:46px}
+.step__dot{position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;border:1px solid var(--mute);background:var(--sec-bg,var(--base));display:grid;place-items:center}
+.step__dot::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--accent);transform:scale(0);transition:transform .5s cubic-bezier(.3,1.6,.5,1) var(--d,0s)}
+.steps.is-in .step__dot::after{transform:scale(1)}
+.step__no{font-family:var(--num);font-size:13px;color:var(--accent);letter-spacing:.12em}
+.step h3{font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:.18em;margin:6px 0 4px}
+.step__sub{font-size:12.5px;color:var(--mute);letter-spacing:.1em;margin:0 0 10px}
+.step p{font-size:14.5px;margin:0;color:var(--soft)}
+.loop{display:flex;align-items:center;gap:14px;margin:52px 0 0;color:var(--mute);font-size:14px}
+.loop svg{flex:none}
+@media (max-width:900px){
+ .steps{grid-template-columns:minmax(0,1fr);gap:0;padding-left:42px}
+ .steps::before,.steps::after{left:11px;right:auto;top:10px;bottom:10px;width:1px;height:auto}
+ .steps::after{transform:scaleY(0);transform-origin:top}
+ .steps.is-in::after{transform:scaleY(1)}
+ .step{padding:0 0 36px}
+ .step__dot{left:-42px}
+}
+
+/* values */
+.values{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.values li{padding:8px clamp(18px,3vw,40px) 8px;border-left:1px solid var(--line)}
+.values li:first-child{border-left:0;padding-left:0}
+.values h3{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.12em;margin:0 0 12px;line-height:1.6}
+.values h3 i{display:block;font-style:normal;font-family:var(--latin);font-size:13px;letter-spacing:.2em;color:var(--accent);margin-bottom:8px}
+.values p{margin:0;font-size:14.5px;color:var(--soft)}
+@media (max-width:860px){.values{grid-template-columns:minmax(0,1fr)}.values li{border-left:0;border-top:1px solid var(--line);padding:24px 0}.values li:first-child{border-top:0;padding-top:0}}
+
+/* message */
+.msg{display:flex;flex-direction:row-reverse;gap:clamp(40px,6vw,96px);justify-content:center;align-items:flex-start}
+.msg__title{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(28px,3vw,40px);letter-spacing:.2em;line-height:1.7;margin:0;flex:none}
+.msg__body{writing-mode:vertical-rl;font-family:var(--serif);font-size:16.5px;line-height:2.3;letter-spacing:.14em;height:30em;max-width:100%;overflow-x:auto;overflow-y:hidden}
+.msg__body p{margin:0 0 0 1.5em}
+.msg__body .first{font-size:1.25em}
+.msg__sign{margin-top:auto!important;text-align:end;font-family:var(--sans)}
+.msg__sign small{display:block;font-size:13px;color:var(--mute);letter-spacing:.2em}
+.msg__sign strong{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.3em}
+@media (max-width:900px){
+ .msg{flex-direction:column;gap:32px}
+ .msg__title,.msg__body{writing-mode:horizontal-tb;height:auto}
+ .msg__body{line-height:2.1;letter-spacing:.06em;overflow:visible}
+ .msg__body p{margin:0 0 1.4em}
+ .msg__sign{text-align:right}
+}
+
+/* company */
+.company-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.company-grid .sh{margin-bottom:24px}
+@media (max-width:900px){.company-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* footer */
+.footer{background:var(--deep);border-top:1px solid var(--line);padding:clamp(56px,8vw,80px) 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.footer-in{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:32px}
+.footer-tag{margin:18px 0 0;font-family:var(--serif);font-size:clamp(15px,1.6vw,19px);letter-spacing:.18em}
+.footer-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 26px}
+.footer-nav a{text-decoration:none;font-size:13px;color:var(--mute);letter-spacing:.1em;transition:color .3s}
+.footer-nav a:hover{color:var(--text)}
+.copy{width:100%;margin:36px 0 0;font-family:var(--latin);font-size:12.5px;color:var(--mute);letter-spacing:.1em}
+.footer--center .footer-in{flex-direction:column;align-items:center;text-align:center}
+.footer--center .footer-nav ul{justify-content:center}
+
+/* rail base */
+.rail{position:fixed;right:clamp(10px,1.6vw,24px);top:50%;transform:translateY(-50%);height:min(54vh,480px);width:18px;z-index:90;pointer-events:none}
+.rail__line{position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--line-strong);opacity:.6}
+.rail__fill{position:absolute;left:8px;top:0;width:1px;height:100%;background:var(--accent);transform-origin:top;transform:scaleY(0)}
+.rail__tick{position:absolute;left:4px;width:9px;height:1px;background:rgba(var(--accent-rgb),.45);transition:width .4s,background .4s}
+.rail__tick.is-passed{width:11px;background:var(--accent)}
+.rail.on-light{--line-strong:rgba(var(--ink-rgb),.4)}
+@media (max-width:900px){.rail{right:6px;height:38vh}.rail__read{display:none}}
+
+.sh{margin:0 0 clamp(40px,6vw,72px)}
+.sh h2{font-family:var(--serif);font-weight:600;font-size:clamp(25px,3vw,38px);line-height:1.55;letter-spacing:.12em;margin:0}
+.sh__sub{margin:12px 0 0;font-size:13px;letter-spacing:.22em;color:var(--mute)}
+.sh__sub::before{content:"";display:inline-block;width:28px;height:1px;background:var(--accent);vertical-align:middle;margin-right:12px}
+.gnav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.gnav a:hover::after,.gnav a:focus-visible::after{transform:scaleX(1)}
+.menu-btn span{position:absolute;left:11px;right:11px;height:1.5px;background:currentColor;transition:transform .3s,opacity .3s,left .3s}
+.menu-btn span:nth-child(1){top:16px}.menu-btn span:nth-child(2){top:22px;left:19px}.menu-btn span:nth-child(3){top:28px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.profile{width:100%;border-collapse:collapse;font-size:15px}
+.profile th,.profile td{text-align:left;vertical-align:top;padding:22px 0;border-bottom:1px solid var(--line);font-weight:400}
+.profile tr:first-child th,.profile tr:first-child td{border-top:1px solid var(--line-strong)}
+.profile th{width:9em;color:var(--mute);font-size:14px;letter-spacing:.14em;padding-right:24px}
+.profile ul{margin:0;padding:0;list-style:none}
+.profile li{position:relative;padding-left:1.2em}
+.profile li+li{margin-top:.3em}
+.profile li::before{content:"";position:absolute;left:0;top:.8em;width:6px;height:6px;background:var(--accent);border-radius:50%;background:none;border:2px dotted var(--accent);width:9px;height:9px;top:.7em}
+@media (max-width:640px){
+ .profile th,.profile td{display:block;width:auto;padding:0}
+ .profile th{padding-top:20px;border-bottom:0}
+ .profile td{padding:4px 0 20px}
+ .profile tr:first-child td{border-top:0}
+}
+.logo__t{display:flex;flex-direction:column;line-height:1.05}
+.logo__t b{font-family:var(--latin);font-weight:500;font-size:22px;letter-spacing:.14em}
+.logo__t small{font-size:10px;color:var(--mute);letter-spacing:.14em}
+.gnav a::after{background:var(--yamabuki)}
+.skip{color:#fff}
+/* dark sections on a light body */
+.paper{--accent:var(--accent-ink);--line:rgba(238,233,223,.14);--line-strong:rgba(238,233,223,.36)}
+.footer{background:var(--deep);color:#EEE9DF;--mute:#A39E93;--line:rgba(238,233,223,.14)}
+.footer .footer-nav a:hover{color:#fff}
+
+/* hero : D framed object (disc) */
+.hero{display:grid;place-items:center;background:radial-gradient(70% 60% at 50% 46%,#FBF8F2 0%,var(--base) 70%)}
+.hero__in{position:relative;z-index:1;width:min(1240px,100% - 48px);display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,auto);gap:clamp(28px,4vw,64px);align-items:center;padding:calc(var(--header-h) + 36px) 0 84px}
+.disc{position:relative;width:min(56vh,520px);aspect-ratio:1;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle,rgba(217,151,30,.08),transparent 66%)}
+.disc::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(28,31,36,.18)}
+.disc canvas{border-radius:50%}
+.hero h1{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(34px,3.9vw,54px);line-height:1.6;letter-spacing:.2em;margin:0}
+.hero h1 span{display:block}
+.hero h1 span+span{padding-top:2em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero__side{max-width:22em}
+.hero__en{font-family:var(--latin);font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.hero__lead{font-size:15px;color:var(--soft);margin:0 0 22px}
+.gear-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.gear-list a{display:grid;grid-template-columns:2.6em minmax(0,1fr);padding:9px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:14px;letter-spacing:.08em;transition:padding .4s}
+.gear-list a:hover{padding-left:.4rem}
+.gear-list em{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--accent);padding-top:2px}
+.hero .scroll-cue{left:50%;bottom:20px;transform:translateX(-50%);flex-direction:column}
+@media (max-width:1080px){
+ .hero__in{grid-template-columns:minmax(0,1fr) auto}
+ .hero__side{grid-column:1 / -1;max-width:none}
+ .disc{width:min(100%,460px);justify-self:center}
+}
+@media (max-width:760px){
+ .hero__in{grid-template-columns:minmax(0,1fr);padding-top:calc(var(--header-h) + 24px)}
+ .hero h1{writing-mode:horizontal-tb;font-size:clamp(28px,8.4vw,40px);letter-spacing:.08em;order:-1}
+ .hero h1 span+span{padding-top:0;padding-left:1em}
+ .disc{width:min(100%,340px)}
+ .hero .scroll-cue{display:none}
+}
+
+/* concept fig */
+.fig .teeth{fill:none;stroke:var(--yamabuki);opacity:0;transition:opacity 1s 1.6s}
+.fig.is-in .teeth{opacity:1}
+.fig .hub{fill:none;stroke:var(--text);stroke-width:1.2}
+.big48{font-family:var(--mono);font-size:26px;fill:var(--text);letter-spacing:.06em}
+
+/* works list */
+.works{list-style:none;margin:0;padding:0}
+.work{display:grid;grid-template-columns:5.2em minmax(0,1fr) minmax(0,1.2fr);gap:clamp(18px,3vw,48px);align-items:start;padding:clamp(28px,4vw,44px) 0;border-top:1px solid var(--line)}
+.work:last-child{border-bottom:1px solid var(--line)}
+.work__no{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.1em;padding-top:6px}
+.work h3{font-family:var(--serif);font-weight:600;font-size:clamp(20px,2.2vw,26px);letter-spacing:.1em;margin:0 0 6px;line-height:1.5}
+.work h3 small{display:block;font-family:var(--latin);font-weight:400;font-size:12.5px;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+.work p{margin:0 0 14px;color:var(--soft)}
+.work .ph{aspect-ratio:16/9;grid-column:2}
+.work .ph img{transition:transform 1.4s cubic-bezier(.22,.7,.2,1)}
+.work:hover .ph img{transform:scale(1.03)}
+.work .txt{grid-column:3;grid-row:1}
+@media (max-width:860px){.work{grid-template-columns:minmax(0,1fr)}.work .ph,.work .txt{grid-column:1;grid-row:auto}}
+
+/* rail : rolling gear */
+.rail__gear{position:absolute;left:8px;top:0;width:20px;height:20px;color:var(--yamabuki);transform:translate(-50%,-50%)}
+.rail__read{position:absolute;right:22px;top:0;transform:translateY(-50%);font-family:var(--mono);font-size:11px;color:var(--mute);writing-mode:vertical-rl;letter-spacing:.1em;white-space:nowrap}
+.rail.on-light{--line-strong:rgba(238,233,223,.4)}
+.rail.on-light .rail__read{color:#A39E93}
+
+@media (prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{animation:none!important;transition:none!important}
+ .js .reveal,.js .hero [data-in]{opacity:1;transform:none}
+ .fig .ln{stroke-dashoffset:0}.fig .dot,.fig .lbl,.fig .lbl-s{opacity:1;transform:none}
+ .steps::after{transform:none}.step__dot::after{transform:scale(1)}
+ .biz__media img{transform:none}
+ .band img{transform:none!important}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="header" id="header">
+  <div class="header-in">
+    <!-- 【確認事項】ロゴ文字「SPM48」と歯車のマークは仮ロゴです -->
+    <a class="logo" href="#top" aria-label="合同会社SPM48 トップへ"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#D9971E" stroke-width="4" stroke-dasharray="2.88 2.88"/><circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span class="logo__t"><b>SPM48</b><small>合同会社SPM48</small></span></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+      <li><a href="#concept">48のこと</a></li>
+      <li><a href="#works">事業内容</a></li>
+      <li><a href="#cycle">運用のサイクル</a></li>
+      <li><a href="#values">大切にしていること</a></li>
+      <li><a href="#message">代表メッセージ</a></li>
+      <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="rail" id="rail" aria-hidden="true">
+  <div class="rail__line"></div>
+  <div class="rail__fill" id="railFill"></div>
+  <svg class="rail__gear" id="railGear" viewBox="-12 -12 24 24"><circle r="8.5" fill="none" stroke="currentColor" stroke-width="3.4" stroke-dasharray="2.22 2.22"/><circle r="3" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span class="rail__read" id="railRead">00/48</span>
+</div>
+
+<main id="main">
+<!-- ===== Hero (D: 円い枠の中の歯車) ===== -->
+<section class="hero" id="top" data-rail aria-labelledby="heroTitle">
+  <div class="hero__in">
+    <div class="hero__side" data-in="3">
+      <p class="hero__en" lang="en">E-commerce operations</p>
+      <p class="hero__lead">合同会社SPM48は、ECサイトの運営業務を担う会社です。商品登録から在庫・受発注・発送、カスタマーサポート、サイトの改善と分析、販促まで、売上を支える日々の運用を一枚ずつ噛み合わせて回します。</p>
+      <ol class="gear-list" aria-label="五つの業務">
+        <li><a href="#w01"><em>01</em>バックオフィス全般</a></li>
+        <li><a href="#w02"><em>02</em>カスタマーサポート</a></li>
+        <li><a href="#w03"><em>03</em>サイト改善・分析</a></li>
+        <li><a href="#w04"><em>04</em>販促・キャンペーン</a></li>
+        <li><a href="#w05"><em>05</em>全体管理</a></li>
+      </ol>
+    </div>
+    <div class="disc" data-in="1"><canvas id="heroCanvas" aria-hidden="true"></canvas></div>
+    <!-- 【確認事項】キャッチコピーは制作側の案 -->
+    <h1 class="v" id="heroTitle" data-in="2"><span>売り場の裏側を、</span><span><em>毎日</em>まわす。</span></h1>
+  </div>
+  <a class="scroll-cue" href="#concept"><i></i>Scroll</a>
+</section>
+
+<!-- ===== Concept ===== -->
+<section class="sec" id="concept" data-rail aria-labelledby="conceptTitle">
+  <div class="wrap concept-grid">
+    <div class="concept-text reveal">
+      <div class="sh sh--below"><h2 id="conceptTitle">48枚の歯が、毎日まわる。</h2> <!-- <p class="sh__sub">社名の「48」のこと</p> --> </div>
+      <!-- 【確認事項】「48＝歯車の歯の数」は社名の数字から着想した制作側の解釈 
+      <p>私たちは、社名の「48」を、48枚の歯をもつ大きな歯車に重ねています。</p> --> 
+      <p>ECサイトの売上は、ページのデザインだけで決まるわけではありません。正確な商品データ、欠品のない在庫、遅れのない発送、丁寧な顧客対応。目立たない仕事の一枚一枚が、歯のように噛み合って回ることで、お客さまの「また買いたい」が生まれます。</p>
+      <p>中心で全体を回し、まわりの四つの業務と噛み合わせる。どれか一枚が欠けても止まらないように、毎日、点検しながら回し続けます。</p>
+    </div>
+    <figure class="fig reveal--fade" data-draw>
+      <svg viewBox="0 0 440 440" role="img" aria-labelledby="figT figD">
+        <title id="figT">中心の歯車と四つの業務の歯車の図</title>
+        <desc id="figD">中央に「全体管理」を表す48枚歯の歯車があり、そのまわりに「バックオフィス」「サポート」「改善・分析」「販促」を表す四つの小さな歯車が噛み合っている図。</desc>
+        <circle class="teeth" cx="220" cy="220" r="96" stroke-width="12" stroke-dasharray="6.28 6.28"/>
+        <path class="ln hub" pathLength="1" d="M220 130a90 90 0 1 1 0 180a90 90 0 1 1 0-180"/>
+        <path class="ln hub d2" pathLength="1" d="M220 196a24 24 0 1 1 0 48a24 24 0 1 1 0-48"/>
+        <g>
+          <circle class="teeth" cx="220" cy="84" r="30" stroke-width="10" stroke-dasharray="6.28 6.28"/>
+          <circle class="teeth" cx="356" cy="220" r="30" stroke-width="10" stroke-dasharray="6.28 6.28"/>
+          <circle class="teeth" cx="220" cy="356" r="30" stroke-width="10" stroke-dasharray="6.28 6.28"/>
+          <circle class="teeth" cx="84" cy="220" r="30" stroke-width="10" stroke-dasharray="6.28 6.28"/>
+        </g>
+        <path class="ln d3" pathLength="1" d="M220 58a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M356 194a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M220 330a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M84 194a26 26 0 1 1 0 52a26 26 0 1 1 0-52"/>
+        <text class="big48" x="220" y="229" text-anchor="middle">48</text>
+        <text class="lbl" x="220" y="290" text-anchor="middle">全体管理</text>
+        <text class="lbl-s" x="220" y="34" text-anchor="middle">バックオフィス</text>
+        <text class="lbl-s" x="356" y="276" text-anchor="middle">サポート</text>
+        <text class="lbl-s" x="220" y="412" text-anchor="middle">改善・分析</text>
+        <text class="lbl-s" x="84" y="276" text-anchor="middle">販促</text>
+      </svg>
+      <figcaption>一枚でも欠ければ、売り場は止まる。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<figure class="band">
+  <!-- 画像：Unsplash（仮）1586528116311-ad8dd3c8310d 差し替え推奨 -->
+  <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=2000&amp;q=72" alt="" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+  <figcaption>見えない仕事が、<br>売上をつくる。</figcaption>
+</figure>
+
+<!-- ===== Works ===== -->
+<section class="sec" id="works" data-rail aria-labelledby="wkTitle">
+  <div class="wrap">
+    <div class="sh sh--below"><h2 id="wkTitle">事業内容 ── ECサイト運営業務</h2><p class="sh__sub">噛み合う五つの業務</p></div>
+    <!-- 【確認事項】各業務の説明はCSVの言い換え・補足 -->
+    <ol class="works">
+      <li class="work reveal" id="w01">
+        <span class="work__no">GEAR 01</span>
+        <figure class="ph">
+          <!-- 画像：Unsplash（仮）1553413077-190dd305871c -->
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=1200&amp;q=72" alt="商品の箱が並ぶ倉庫の通路" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </figure>
+        <div class="txt"><h3><small>Back office</small>バックオフィス全般</h3><p>新商品のデータ登録、在庫管理、受発注、そして日々の発送処理まで。売り場を止めない土台を整えます。</p><ul class="tags"><li>商品データ登録</li><li>在庫管理</li><li>受発注</li><li>発送処理</li></ul></div>
+      </li>
+      <li class="work reveal" id="w02">
+        <span class="work__no">GEAR 02</span>
+        <figure class="ph">
+          <!-- 画像：Unsplash（仮）1551434678-e076c223a692 -->
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&amp;fit=crop&amp;w=1200&amp;q=72" alt="パソコンに向かって作業するスタッフ" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </figure>
+        <div class="txt"><h3><small>Customer support</small>カスタマーサポート</h3><p>ユーザーからのご質問やご連絡に対応し、顧客満足度を高めるための施策にも取り組みます。</p><ul class="tags"><li>ユーザー対応</li><li>満足度向上の施策</li></ul></div>
+      </li>
+      <li class="work reveal" id="w03">
+        <span class="work__no">GEAR 03</span>
+        <figure class="ph">
+          <!-- 画像：Unsplash（仮）1460925895917-afdab827c52f -->
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1200&amp;q=72" alt="アクセス解析のグラフを表示したノートパソコン" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </figure>
+        <div class="txt"><h3><small>Analytics &amp; SEO</small>サイト改善・分析</h3><p>アクセス解析にもとづいてサイト内の導線を見直し、SEO対策を進めます。</p><ul class="tags"><li>アクセス解析</li><li>導線の見直し</li><li>SEO対策</li></ul></div>
+      </li>
+      <li class="work reveal" id="w04">
+        <span class="work__no">GEAR 04</span>
+        <figure class="ph">
+          <!-- 画像：Unsplash（仮）1607082348824-0a96f2a4b9da -->
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&amp;fit=crop&amp;w=1200&amp;q=72" alt="並べられたショッピングバッグ" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </figure>
+        <div class="txt"><h3><small>Promotion</small>販促・キャンペーン</h3><p>売上拡大を目的としたキャンペーンを企画し、実行まで担います。</p><ul class="tags"><li>キャンペーン企画</li><li>実行・振り返り</li></ul></div>
+      </li>
+      <li class="work reveal" id="w05">
+        <span class="work__no">GEAR 05</span>
+        <figure class="ph">
+          <!-- 画像：Unsplash（仮）1563013544-824ae1b704d3 -->
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&amp;fit=crop&amp;w=1200&amp;q=72" alt="ノートパソコンでオンライン決済をする手元" loading="lazy" decoding="async" onerror="this.parentNode.classList.add('is-fallback');this.remove()">
+        </figure>
+        <div class="txt"><h3><small>Operations</small>全体管理</h3><p>サイトの安定稼働を維持し、継続的な売上向上に向けた運用サイクルを推進します。</p><ul class="tags"><li>安定稼働の維持</li><li>運用サイクルの推進</li></ul></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== Cycle ===== -->
+<section class="sec paper" id="cycle" data-rail data-light aria-labelledby="cyTitle">
+  <div class="wrap">
+    <div class="sh sh--below"><h2 id="cyTitle">回し続けることで、売上は育つ。</h2><p class="sh__sub">運用のサイクル</p></div>
+    <!-- 【確認事項】サイクルの区分は制作側の案。順序のある工程のため番号を使用 -->
+    <ol class="steps reveal--fade" data-draw style="--n:4">
+      <li class="step"><span class="step__dot" aria-hidden="true"></span><span class="step__no">01</span><h3>整える</h3><p>商品データと在庫を正確に保ち、売り場の準備を整えます。</p></li>
+      <li class="step" style="--d:.6s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">02</span><h3>届ける</h3><p>受発注と発送を滞りなく進め、商品を確実にお届けします。</p></li>
+      <li class="step" style="--d:1.2s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">03</span><h3>応える</h3><p>ユーザーの声に向き合い、満足度を高める工夫を重ねます。</p></li>
+      <li class="step" style="--d:1.8s"><span class="step__dot" aria-hidden="true"></span><span class="step__no">04</span><h3>磨く</h3><p>解析とキャンペーンでサイトを見直し、次の売上につなげます。</p></li>
+    </ol>
+    <p class="loop reveal"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M22 9a9 9 0 1 0 1.6 7" fill="none" stroke="#E9AC3A" stroke-width="1.4" stroke-linecap="round"/><path d="M22.6 3.6 22 9l-5.2-1" fill="none" stroke="#E9AC3A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>磨いた売り場で、また「整える」から。歯車は止めずに回します。</p>
+  </div>
+</section>
+
+<!-- ===== Values ===== -->
+<section class="sec" id="values" data-rail aria-labelledby="vaTitle">
+  <div class="wrap">
+    <div class="sh sh--below"><h2 id="vaTitle">大切にしていること</h2><p class="sh__sub">Values</p></div>
+    <!-- 【確認事項】文言は制作側の案 -->
+    <ul class="values reveal">
+      <li><h3><i>01</i>正確さを、当たり前に</h3><p>商品情報や在庫、発送のひとつのミスが信頼を損ねます。基本を丁寧に積み重ねます。</p></li>
+      <li><h3><i>02</i>お客さまの目線で見る</h3><p>買う人にとって分かりやすく、迷わない売り場かどうかを、いつも確かめます。</p></li>
+      <li><h3><i>03</i>止めずに、少しずつ良く</h3><p>安定稼働を守りながら、改善を小さく重ねて売上を育てます。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== Message（草案） ===== -->
+<section class="sec paper" id="message" data-rail data-light aria-labelledby="msgTitle">
+  <!-- 【確認事項】代表メッセージは草案です。ご本人の確認・修正を経て公開してください -->
+  <div class="wrap">
+    <div class="msg reveal">
+      <h2 class="msg__title" id="msgTitle">止まらないことが、<br>いちばんの仕事。</h2>
+      <div class="msg__body">
+        <p class="first">ＥＣサイトは、二十四時間開いているお店です。</p>
+        <p>お客さまから見えるのはページだけですが、その裏では、商品の登録、在庫の確認、注文の処理、発送、お客さまからのご質問への対応と、たくさんの仕事が毎日休まず回っています。</p>
+        <p>私たちは、その歯車の一枚一枚を正確に、そして止めずに回すことを大切にしています。</p>
+        <p>そのうえで数字を見て、売り場を少しずつ良くしていく。地道な積み重ねで、売上を育てていきます。</p>
+        <!-- 【確認事項】署名欄の氏名は会社概要に記載のため省略。役職名は仮 -->
+        <p class="msg__sign"><small>代表社員</small><strong>水川 悟司</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Company ===== -->
+<section class="sec" id="company" data-rail aria-labelledby="coTitle">
+  <div class="wrap company-grid">
+    <div class="reveal"><div class="sh sh--below"><h2 id="coTitle">会社概要</h2><p class="sh__sub">Company</p></div></div>
+    <div class="reveal">
+<table class="profile"><tbody>
+  <tr><th scope="row">商号</th><td>合同会社SPM48</td></tr>
+  <!-- 【確認事項】役職名（合同会社のため代表社員と仮置き） -->
+  <tr><th scope="row">代表者</th><td>代表社員　水川 悟司</td></tr>
+  <tr><th scope="row">所在地</th><td>〒146-0091　東京都大田区鵜の木3-23-12</td></tr>
+  <tr><th scope="row">事業内容</th><td>ECサイト運営業務<ul><li>バックオフィス全般：新商品のデータ登録、在庫管理、受発注および日々の発送処理</li><li>カスタマーサポート：ユーザーからの問い合わせ対応および顧客満足度向上のための施策</li><li>サイト改善・分析：アクセス解析に基づいたサイト内導線の見直し、およびSEO対策</li><li>販促・キャンペーン：売上拡大を目的としたキャンペーンの企画と実行</li><li>全体管理：サイトの安定稼働の維持と、継続的な売上向上に向けた運用サイクルの推進</li></ul></td></tr>
+  <!-- 【確認事項】設立年月日・資本金・従業員数はCSVに無いため未掲載。確定後にコメントを外して記入
+  <tr><th scope="row">設立</th><td>　年　月</td></tr>
+  <tr><th scope="row">資本金</th><td>　万円</td></tr>
+  <tr><th scope="row">従業員数</th><td>　名</td></tr>
+  -->
+</tbody></table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <a class="logo" href="#top" aria-label="合同会社SPM48 トップへ"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="#D9971E" stroke-width="4" stroke-dasharray="2.88 2.88"/><circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span class="logo__t"><b>SPM48</b><small>合同会社SPM48</small></span></a>
+      <p class="footer-tag">売り場の裏側を、毎日まわす。</p>
+    </div>
+    <nav class="footer-nav" aria-label="フッターメニュー">
+      <ul>
+      <li><a href="#concept">48のこと</a></li>
+      <li><a href="#works">事業内容</a></li>
+      <li><a href="#cycle">運用のサイクル</a></li>
+      <li><a href="#values">大切にしていること</a></li>
+      <li><a href="#message">代表メッセージ</a></li>
+      <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+    <p class="copy"><small>&copy; <span id="year">2026</span> 合同会社SPM48</small></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+var railHooks = [], revealHooks = [];
+var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+/* header */
+var header = document.getElementById('header');
+
+/* menu */
+var btn = document.getElementById('menuBtn'), nav = document.getElementById('gnav');
+function setMenu(open){
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  nav.classList.toggle('is-open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (open){ var f = nav.querySelector('a'); if (f) f.focus(); }
+}
+btn.addEventListener('click', function(){ setMenu(btn.getAttribute('aria-expanded') !== 'true'); });
+nav.addEventListener('click', function(e){ if (e.target.closest('a') && nav.classList.contains('is-open')) setMenu(false); });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && nav.classList.contains('is-open')){ setMenu(false); btn.focus(); } });
+matchMedia('(min-width:901px)').addEventListener('change', function(m){ if (m.matches) setMenu(false); });
+
+/* canvas runner (DPR<=2, debounce, pause offscreen/hidden, still frame on reduce) */
+function runCanvas(cv, factory, stillT){
+  if (!cv || !cv.getContext) return null;
+  var ctx = cv.getContext('2d'); if (!ctx) return null;
+  var api = factory(ctx), W = 0, H = 0, running = false, visible = true, raf = 0, t0 = performance.now();
+  function resize(){
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    api.build(W, H);
+  }
+  function loop(now){ if (!running) return; api.draw((now - t0)/1000); raf = requestAnimationFrame(loop); }
+  function start(){ if (running || reduce || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(loop); }
+  function stop(){ running = false; cancelAnimationFrame(raf); }
+  function still(){ api.draw(stillT || 99); }
+  resize();
+  if (reduce) still(); else start();
+  var rt, lastW = W;
+  addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){
+    if (cv.clientWidth === lastW && Math.abs(cv.clientHeight - H) < 120 && running) return;  /* mobile URL bar */
+    lastW = cv.clientWidth; resize(); if (!running) still(); }, 150); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; visible ? start() : stop(); }).observe(cv.parentElement);
+  }
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+  return { still: still, isRunning: function(){ return running; } };
+}
+var pointer = {x:.5, y:.5, has:false};
+addEventListener('pointermove', function(e){ pointer.x = e.clientX/innerWidth; pointer.y = e.clientY/innerHeight; pointer.has = true; }, {passive:true});
+function clamp(v,a,b){ return v < a ? a : (v > b ? b : v); }
+function ease(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
+
+
+/* hero: 48枚歯の歯車と、噛み合う五つの小さな歯車 */
+runCanvas(document.getElementById('heroCanvas'), function(ctx){
+  var W, H;
+  function gear(cx, cy, R, n, ang, k, col, fill){
+    var h = R*(n > 20 ? .07 : .2), step = 6.2832/n;
+    ctx.beginPath();
+    var m = Math.max(1, Math.ceil(n*k));
+    for (var i = 0; i < m; i++){
+      var a = ang + i*step;
+      var a1 = a - step*.25, a2 = a - step*.15, a3 = a + step*.15, a4 = a + step*.25, a5 = a + step*.75;
+      ctx.lineTo(cx + Math.cos(a1)*R, cy + Math.sin(a1)*R);
+      ctx.lineTo(cx + Math.cos(a2)*(R + h), cy + Math.sin(a2)*(R + h));
+      ctx.lineTo(cx + Math.cos(a3)*(R + h), cy + Math.sin(a3)*(R + h));
+      ctx.lineTo(cx + Math.cos(a4)*R, cy + Math.sin(a4)*R);
+      ctx.lineTo(cx + Math.cos(a5)*R, cy + Math.sin(a5)*R);
+    }
+    if (k >= 1){ ctx.closePath(); if (fill){ ctx.fillStyle = fill; ctx.fill(); } }
+    ctx.strokeStyle = col; ctx.lineWidth = 1.2; ctx.stroke();
+  }
+  return {
+    build: function(w, h){ W = w; H = h; },
+    draw: function(t){
+      ctx.clearRect(0, 0, W, H);
+      var S = Math.min(W, H), cx = W/2, cy = H/2, R = S*.25, r = R/4, sp = .12;
+      var big = t*sp;
+      var kb = ease(clamp((t - .2)/1.8, 0, 1));
+      gear(cx, cy, R, 48, big, kb, 'rgba(28,31,36,.75)', 'rgba(217,151,30,.07)');
+      if (kb >= 1){
+        ctx.strokeStyle = 'rgba(28,31,36,.35)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.arc(cx, cy, R*.62, 0, 6.283); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx, cy, R*.2, 0, 6.283); ctx.stroke();
+        for (var s = 0; s < 6; s++){ var sa = big + s*1.0472; ctx.beginPath(); ctx.moveTo(cx + Math.cos(sa)*R*.2, cy + Math.sin(sa)*R*.2); ctx.lineTo(cx + Math.cos(sa)*R*.62, cy + Math.sin(sa)*R*.62); ctx.stroke(); }
+        ctx.fillStyle = 'rgba(28,31,36,.85)'; ctx.font = '500 ' + Math.round(R*.2) + 'px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('48', cx, cy + R*.42);
+      }
+      for (var i = 0; i < 4; i++){
+        var phi = -1.5708 + i*1.5708, d = R + r + R*.07;
+        var gx = cx + Math.cos(phi)*d, gy = cy + Math.sin(phi)*d;
+        var ks = ease(clamp((t - 1.6 - i*.25)/1, 0, 1)); if (ks <= 0) continue;
+        var a2 = -big*4 + phi*5 + Math.PI/12;
+        gear(gx, gy, r, 12, a2, ks, 'rgba(184,122,14,.95)', 'rgba(217,151,30,.18)');
+        if (ks >= 1){ ctx.fillStyle = 'rgba(28,31,36,.8)'; ctx.beginPath(); ctx.arc(gx, gy, r*.22, 0, 6.283); ctx.fill(); }
+      }
+    }
+  };
+}, 99);
+
+/* rail: 転がりながら下る歯車と歯の数 */
+var rg = document.getElementById('railGear'), rRead = document.getElementById('railRead'), railEl = document.getElementById('rail');
+railHooks.push(function(p){
+  var travel = railEl.clientHeight, ang = reduce ? 0 : (p*travel)/(Math.PI*20)*360;
+  rg.style.top = (p*100) + '%';
+  rg.style.transform = 'translate(-50%,-50%) rotate(' + ang.toFixed(1) + 'deg)';
+  var n = Math.round(p*48); rRead.style.top = (p*100) + '%';
+  rRead.textContent = (n < 10 ? '0' : '') + n + '/48';
+});
+
+
+/* reveal (one-shot) */
+var targets = document.querySelectorAll('.reveal, [data-draw]');
+function reveal(el){ el.classList.add('is-in'); revealHooks.forEach(function(h){ h(el); }); }
+if ('IntersectionObserver' in window && !reduce){
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (!en.isIntersecting) return; reveal(en.target); io.unobserve(en.target); });
+  }, {threshold:.18, rootMargin:'0px 0px -6% 0px'});
+  targets.forEach(function(t){ io.observe(t); });
+} else { targets.forEach(reveal); }
+
+/* rail */
+var rail = document.getElementById('rail'), fill = document.getElementById('railFill');
+var secs = Array.prototype.slice.call(document.querySelectorAll('[data-rail]')), ticks = [];
+var lights = Array.prototype.slice.call(document.querySelectorAll('[data-light]'));
+function layoutTicks(){
+  ticks.forEach(function(t){ t.el.remove(); }); ticks = [];
+  var max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  secs.forEach(function(s){
+    var p = clamp(s.offsetTop / max, 0, 1), el = document.createElement('i');
+    el.className = 'rail__tick'; el.style.top = (p*100) + '%'; rail.appendChild(el); ticks.push({p:p, el:el});
+  });
+}
+var band = document.querySelector('.band img');
+function onScroll(){
+  header.classList.toggle('is-scrolled', scrollY > 40);
+  var max = document.documentElement.scrollHeight - innerHeight;
+  var p = max > 0 ? clamp(scrollY / max, 0, 1) : 0;
+  fill.style.transform = 'scaleY(' + p + ')';
+  ticks.forEach(function(t){ t.el.classList.toggle('is-passed', p >= t.p - .002); });
+  var mid = innerHeight/2, onLight = lights.some(function(s){ var r = s.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
+  rail.classList.toggle('on-light', onLight);
+  railHooks.forEach(function(h){ h(p, ticks); });
+  if (band && !reduce){
+    var r = band.parentElement.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < innerHeight){ var k = (r.top + r.height/2 - innerHeight/2)/innerHeight; band.style.transform = 'translateY(' + (k*-40).toFixed(1) + 'px)'; }
+  }
+}
+var ticking = false;
+addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); } }, {passive:true});
+addEventListener('load', function(){ layoutTicks(); onScroll(); });
+addEventListener('resize', function(){ layoutTicks(); onScroll(); });
+layoutTicks(); onScroll();
+
+requestAnimationFrame(function(){ requestAnimationFrame(function(){ document.body.classList.add('is-loaded'); }); });
+})();
+</script>
+</body>
+</html>
