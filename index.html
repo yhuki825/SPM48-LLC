@@ -421,7 +421,7 @@ p{margin:0 0 1.3em}
           <circle class="teeth" cx="84" cy="220" r="30" stroke-width="10" stroke-dasharray="6.28 6.28"/>
         </g>
         <path class="ln d3" pathLength="1" d="M220 58a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M356 194a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M220 330a26 26 0 1 1 0 52a26 26 0 1 1 0-52 M84 194a26 26 0 1 1 0 52a26 26 0 1 1 0-52"/>
-        <text class="big48" x="220" y="229" text-anchor="middle">48</text>
+        <text class="big48" x="220" y="229" text-anchor="middle"></text>
         <text class="lbl" x="220" y="290" text-anchor="middle">全体管理</text>
         <text class="lbl-s" x="220" y="34" text-anchor="middle">バックオフィス</text>
         <text class="lbl-s" x="356" y="276" text-anchor="middle">サポート</text>
@@ -667,8 +667,6 @@ runCanvas(document.getElementById('heroCanvas'), function(ctx){
         ctx.beginPath(); ctx.arc(cx, cy, R*.62, 0, 6.283); ctx.stroke();
         ctx.beginPath(); ctx.arc(cx, cy, R*.2, 0, 6.283); ctx.stroke();
         for (var s = 0; s < 6; s++){ var sa = big + s*1.0472; ctx.beginPath(); ctx.moveTo(cx + Math.cos(sa)*R*.2, cy + Math.sin(sa)*R*.2); ctx.lineTo(cx + Math.cos(sa)*R*.62, cy + Math.sin(sa)*R*.62); ctx.stroke(); }
-        ctx.fillStyle = 'rgba(28,31,36,.85)'; ctx.font = '500 ' + Math.round(R*.2) + 'px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.fillText('48', cx, cy + R*.42);
       }
       for (var i = 0; i < 4; i++){
         var phi = -1.5708 + i*1.5708, d = R + r + R*.07;
